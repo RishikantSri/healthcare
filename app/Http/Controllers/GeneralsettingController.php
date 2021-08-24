@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Generalsetting;
 use App\Models\Sectionhideshow;
+use App\Models\Generalcontent;
 
 
 class GeneralsettingController extends Controller
@@ -18,7 +19,18 @@ class GeneralsettingController extends Controller
     {
         $generalsettings = Generalsetting::find(1);
         $hideshow = Sectionhideshow::all();
-        return view('frontend.layouts.app',compact('generalsettings','hideshow') );
+        $contentwhyus = Generalcontent::where('show', '=',1)->where('contenttype','=','whyus')->get();
+        $contentaboutus = Generalcontent::where('show', '=',1)->where('contenttype','=','aboutus')->get();
+        $contentservices = Generalcontent::where('show', '=',1)->where('contenttype','=','services')->get();
+        $contentfaq = Generalcontent::where('show', '=',1)->where('contenttype','=','faq')->get();
+        //$model = User::where('votes', '>', 100)->firstOrFail();
+      //  dd($generalcontent);
+        return view('frontend.layouts.app',compact('generalsettings',
+                                                    'hideshow',
+                                                    'contentwhyus',
+                                                    'contentaboutus',
+                                                    'contentservices',
+                                                    'contentfaq') );
     }
 
     /**

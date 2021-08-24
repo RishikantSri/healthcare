@@ -1,0 +1,27 @@
+body {
+   
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    color: #333 !important;
+    background-color: #989191 !important;
+}
+
+.table {
+    color: #2e2f30;
+    font-weight: 500;
+    background-color: #ece9e9;
+}
+
+table.dataTable tbody tr {
+    background-color: #ece9e9;
+    
+}
+
+.app-container .side-body .container-fluid {
+    
+    background-color: whitesmoke;
+}
+
+.btn-link, .checkbox-inline, .checkbox label, .radio-inline, .radio label, label {
+    font-weight: 500;
+}

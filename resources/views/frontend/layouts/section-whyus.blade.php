@@ -17,27 +17,17 @@
           <div class="col-lg-8 d-flex align-items-stretch">
             <div class="icon-boxes d-flex flex-column justify-content-center">
               <div class="row">
+                @foreach ( $contentwhyus as $info )
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-receipt"></i>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <i class="bx {{$info->icon}}"></i>
+                    <h4>{{$info->heading}}</h4>
+                    <p>{{$info->subheading}}</p>
                   </div>
                 </div>
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-cube-alt"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-images"></i>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                  </div>
-                </div>
+                @endforeach
+               
+               
               </div>
             </div><!-- End .content-->
           </div>
