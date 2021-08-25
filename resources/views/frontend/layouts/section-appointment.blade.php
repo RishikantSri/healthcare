@@ -7,7 +7,10 @@
           <p>{{$hideshow[4]['subheading']}}</p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+              
+        <form action="{{ route('appointment') }}" method="POST" enctype="multipart/form-data">
+         @csrf
+         @method('POST')
           <div class="form-row">
             <div class="col-md-4 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -24,7 +27,7 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 form-group">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="datetime" name="appointment_date" data-date-format="yyyy-mm-dd"  class="form-control datepicker" id="appointment_date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group">

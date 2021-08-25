@@ -7,75 +7,25 @@
         </div>
 
         <div class="row">
-
+        @foreach ( $doctors as $info )
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="{{ asset('frontend/assets/img/doctors/doctors-1.jpg') }}" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="{{ Voyager::image( $info->image ) }}" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                <h4>{{$info->name}}</h4>
+                <span>{{$info->title}}</span>
+                <p>{{$info->about}}</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="{{$info->twitter}}"><i class="ri-twitter-fill"></i></a>
+                  <a href="{{$info->facebook}}"><i class="ri-facebook-fill"></i></a>
+                  <a href="{{$info->instagram}}"><i class="ri-instagram-fill"></i></a>
+                  <a href="{{$info->linkedin}}"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="{{ asset('frontend/assets/img/doctors/doctors-2.jpg') }}" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="{{ asset('frontend/assets/img/doctors/doctors-3.jpg') }}" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="{{ asset('frontend/assets/img/doctors/doctors-4.jpg') }}" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          @endforeach
+        
         </div>
 
       </div>

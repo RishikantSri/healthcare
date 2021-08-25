@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [App\Http\Controllers\GeneralsettingController::class, 'index'])->name('home');
-Route::post('/contact', [App\Http\Controllers\GeneralsettingController::class, 'ContactStore'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\GeneralsettingController::class, 'AppointmentStore'])->name('appointment');
 
 
 Route::group(['prefix' => 'admin'], function () {
