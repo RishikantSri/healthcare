@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [App\Http\Controllers\GeneralsettingController::class, 'index'])->name('home');
-Route::post('/contact', [App\Http\Controllers\GeneralsettingController::class, 'AppointmentStore'])->name('appointment');
-
+Route::post('/appointment', [App\Http\Controllers\GeneralsettingController::class, 'AppointmentStore'])->name('appointment');
+Route::post('/contact', [App\Http\Controllers\GeneralsettingController::class, 'ContactStore'])->name('contact');
+Route::post('/subscribe', [App\Http\Controllers\GeneralsettingController::class, 'SubscriptionStore'])->name('subscribe');
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+     Voyager::routes();
 });

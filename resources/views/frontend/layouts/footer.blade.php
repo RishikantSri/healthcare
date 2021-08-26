@@ -43,11 +43,31 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Join Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <form action="{{ route('subscribe') }}" method="POST" enctype="multipart/form-data">
+             @csrf 
+             @method('POST')
+              <input type="email" name="email">
+              <input type="submit" value="Subscribe">
             </form>
+            @if ($message = Session::get('success_subscribe'))
+              <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>{{ $message }}</strong>
+            
+              </div>
+              @endif
+             @if ($message = Session::get('error_subscribe'))
+              <div class="alert alert-danger alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>{{ $message }}</strong>
+              <div class="sent-message">message not sent . Try again!</div>
+              </div>
+             @endif
+             @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
-
+        
         </div>
       </div>
     </div>

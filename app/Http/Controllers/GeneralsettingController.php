@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointmentlist;
+use App\Models\Contactlist;
 use Illuminate\Http\Request;
 use App\Models\Generalsetting;
 use App\Models\Sectionhideshow;
 use App\Models\Generalcontent;
 use App\Models\Department;
 use App\Models\Doctor;
+use App\Models\Galleryimage;
+use App\Models\Settingother;
+use App\Models\Subscription;
+use App\Models\Testimonial;
 
 class GeneralsettingController extends Controller
 {
@@ -27,9 +32,12 @@ class GeneralsettingController extends Controller
         $contentfaq = Generalcontent::where('show', '=',1)->where('contenttype','=','faq')->get();
         $departments = Department::where('show', '=',1)->get();
         $doctors = Doctor::where('show', '=',1)->get();
+        $settingother = Settingother::find(1);
 
+        $testimonials = Testimonial::all();
+        $galleryimages = Galleryimage::where('show', '=',1)->get();
 
-        //$model = User::where('votes', '>', 100)->firstOrFail();
+        
       //  dd($generalcontent);
         return view('frontend.layouts.app',compact('generalsettings',
                                                     'hideshow',
@@ -38,7 +46,10 @@ class GeneralsettingController extends Controller
                                                     'contentservices',
                                                     'contentfaq',
                                                     'departments',
-                                                    'doctors') );
+                                                    'doctors',
+                                                    'settingother',
+                                                    'testimonials',
+                                                    'galleryimages') );
     }
 
 
@@ -87,16 +98,106 @@ class GeneralsettingController extends Controller
         // });
             
             
-            return redirect()->route('home')->with('message', 'Message sent,  successfully.');
+          //  return redirect()->route('home')->with('success', 'Message sent,  successfully.');
+           return redirect()->to(url()->previous() . '#appointment')->with('success', 'Message sent,  successfully.');
+            // return back()->with('success','Product successfully added.');
 
 
         }
            
       
-
-        return redirect()->route('home')->with('message', 'Message Not sent');
+        return redirect()->to(url()->previous() . '#appointment')->with('error', 'Message not sent.');
+       
     }
 
+    public function ContactStore(Request $request) 
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'subject' => [ 'string','max:255', ],
+            'email' => ['string', 'max:100'],
+            'message' => [ 'string', 'max:1000'],
+          
+           
+        ]);
+      
+        
+        $contactlist = Contactlist::create([
+            'name' => $request->name,
+            'subject' => $request->subject,
+            'email' => $request->email,
+            'message' => $request->message ?? 0,
+         
+        ]);
+
+        if($contactlist)
+        {
+             //  Email :sending on registration
+ 
+        // email data
+        // $email_data = array(
+        //     'name' =>  $request->name,
+        //     'email' =>$request->email,
+        // );
+
+        // // send email with the template
+        // Mail::send('frontend.layouts.email', $email_data, function ($message) use ($email_data) {
+        //     $message->to($email_data['email'], $email_data['name'])
+        //         ->subject('Welcome to NGO')
+        //         ->from('NGO@rishikantsri.tech', 'NGO: It Helps');
+        // });
+            
+            
+            // return redirect()->route('home')->with('message', 'Message sent,  successfully.');
+            return redirect()->to(url()->previous() . '#contact')->with('success_contact', 'Message sent,  successfully.');    
+
+        }
+           
+      
+
+        return redirect()->to(url()->previous() . '#contact')->with('error_contact', 'Message not sent,  successfully.');
+    }
+
+
+    public function SubscriptionStore(Request $request) 
+    {
+        $validated = $request->validate([
+            'email' => ['email',  'max:100' , 'unique:subscriptions'],
+        ]);
+      
+        
+        $subscription = Subscription::create([
+            'email' => $request->email,
+        ]);
+
+        if($subscription)
+        {
+             //  Email :sending on registration
+ 
+        // email data
+        // $email_data = array(
+        //     'name' =>  $request->name,
+        //     'email' =>$request->email,
+        // );
+
+        // // send email with the template
+        // Mail::send('frontend.layouts.email', $email_data, function ($message) use ($email_data) {
+        //     $message->to($email_data['email'], $email_data['name'])
+        //         ->subject('Welcome to NGO')
+        //         ->from('NGO@rishikantsri.tech', 'NGO: It Helps');
+        // });
+            
+            
+            // return redirect()->route('home')->with('message', 'Message sent,  successfully.');
+            return redirect()->to(url()->previous() . '#footer')->with('success_subscribe', 'Subscribed,  successfully.');    
+
+        }
+           
+      
+        return redirect()->to(url()->previous() . '#footer')->with('error_subscribe', 'error occured, Try again!.'); 
+       
+
+    }
 
 
     /**

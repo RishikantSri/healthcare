@@ -3,7 +3,7 @@
 
         <div class="section-title">
           <h2> {{$hideshow[3]['heading']}}</h2>
-          <p>{{$hideshow[3]['subheading']}}</p>
+          <p>{!! $hideshow[3]['subheading'] !!}</p>
         </div>
  
         <div class="row">
