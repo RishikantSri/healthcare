@@ -1,4 +1,4 @@
-<h1 align="center">Health Crae ></h1>
+<h1 align="center">Health Care: Online Patient Management System ></h1>
 <div align="center">
 <br>
 </div>
