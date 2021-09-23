@@ -30,10 +30,10 @@ This product has these features.
 
 <br>Design Updated and Developed By 
 <br>Rishikant Srivastava
-<br>rishikantsri.tech
+<br>rishikantsri.online
 
 ## Live Site
-https://healthcare.rishikantsri.tech/
+https://healthcare.rishikantsri.online/
 
 
 ## FAQ
